@@ -1,0 +1,8 @@
+13:55:33,330  INFO StackImplExpressionEvalCalculator:162 - Total Time took for the Expression( add ) Evaluation Process : 223565
+13:55:33,339  INFO StackImplExpressionEvalCalculator:164 - add ==> 0.0
+13:55:54,743  INFO StackImplExpressionEvalCalculator:162 - Total Time took for the Expression( add ) Evaluation Process : 221781
+13:55:54,749  INFO StackImplExpressionEvalCalculator:164 - add ==> 0.0
+13:56:46,337  INFO StackImplExpressionEvalCalculator:162 - Total Time took for the Expression( add ) Evaluation Process : 235168
+13:56:46,346  INFO StackImplExpressionEvalCalculator:164 - add ==> 0.0
+13:59:24,278  INFO StackImplExpressionEvalCalculator:162 - Total Time took for the Expression( add ) Evaluation Process : 232936
+13:59:24,288  INFO StackImplExpressionEvalCalculator:164 - add ==> 0.0
