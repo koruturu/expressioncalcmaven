@@ -1,21 +1,21 @@
 package org.synopsys.codeexample.expcalc;
 
-import java.io.InputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Scanner;
 import java.util.Stack;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
-
+//This is stack implementation, stack implementation is using more pattern match comparison which will degrade the performance.
+//I have also implemented the recursive approach which I prefer, I have assumed let assignment is in only one character i.e. let(a, 5, add(a, a))
+//the program will fail if let(ab, 5, add(ab, ab)).
 public class StackImplExpressionEvalCalculator {
 	private static final Logger logger = Logger.getLogger(StackImplExpressionEvalCalculator.class);
+	//checking whether let assignment operator is number or a character, taking the context accordingly.
 	private Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
-	private Hashtable<Object, Double> context_dict = new Hashtable();
+	private Hashtable<Object, Double> context_dict = new Hashtable<Object, Double>();
 
 	private double evaluate(Object expList) throws InvalidExpressionException {
 		if (expList instanceof String) {
@@ -27,11 +27,11 @@ public class StackImplExpressionEvalCalculator {
 				return this.context_dict.get(expList.toString());
 			} catch (Exception e) {
 				throw new InvalidExpressionException(
-						"Please give valid expression, you might have had given maximum or minimum double values allowed or had passed a wrong expression.",
+						"Please give a valid expression, you might have given maximum or minimum double values allowed or had passed a wrong expression.",
 						e);
 			}
 		}
-		ArrayList exp_list = (ArrayList) expList;
+		ArrayList<String> exp_list = (ArrayList) expList;
 		String operator = exp_list.get(0).toString();
 		Object exp = exp_list.get(1);
 		if (operator.equalsIgnoreCase("root")) {
@@ -51,12 +51,12 @@ public class StackImplExpressionEvalCalculator {
 			return this.evaluate(exp_list.get(3));
 		}
 		throw new InvalidExpressionException(
-				"You had given a invalid operator, Only add,mult,div,let are allowed!" + operator);
+				"You had given an invalid operator, Only add,mult,div,let are allowed!" + operator);
 	}
 
 	public double evaluateExp(String exp_str) throws Exception {
 		if (StringUtils.isEmpty(exp_str)) {
-			throw new InvalidExpressionException("You had given empty expression, please provide a valid expression.");
+			throw new InvalidExpressionException("You had given an empty expression, please provide a valid expression.");
 		}
 		Stack<String> stack = new Stack<String>();
 		exp_str = exp_str.trim();
@@ -148,12 +148,13 @@ public class StackImplExpressionEvalCalculator {
 					"Please enter the calculator expression here or you can add as arguments while running the program.");
 			Scanner sc = new Scanner(System.in);
 			expresssion = sc.nextLine();
+			sc.close();
 		} else {
 			expresssion = args[0];
 		}
 		try {
 			if (StringUtils.isEmpty((CharSequence) expresssion)) {
-				throw new InvalidExpressionException("Empty expression provided, please provide valid expression.");
+				throw new InvalidExpressionException("Empty expression provided, please provide a valid expression.");
 			}
 			StackImplExpressionEvalCalculator impl = new StackImplExpressionEvalCalculator();
 			long startTime = System.nanoTime();

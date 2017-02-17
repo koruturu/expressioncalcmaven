@@ -58,7 +58,7 @@ public class StackCalcTest {
 	public void throwsExceptionWhennotpassingAnyValue() throws Exception {
 		StackImplExpressionEvalCalculator exprCalc = new StackImplExpressionEvalCalculator();
 		thrown.expect(InvalidExpressionException.class);
-		thrown.expectMessage("You had given empty expression, please provide a valid expression.");
+		thrown.expectMessage("You had given an empty expression, please provide a valid expression.");
 		// act
 		exprCalc.evaluateExp("");
 	}
@@ -67,7 +67,7 @@ public class StackCalcTest {
 	public void throwsExceptionWhennotpassingNotCorrectOperator() throws Exception {
 		StackImplExpressionEvalCalculator exprCalc = new StackImplExpressionEvalCalculator();
 		thrown.expect(InvalidExpressionException.class);
-		thrown.expectMessage("You had given a invalid operator, Only add,mult,div,let are allowed!");
+		thrown.expectMessage("You had given an invalid operator, Only add,mult,div,let are allowed!");
 		// act
 		exprCalc.evaluateExp("test(1,2)");
 	}
@@ -85,7 +85,7 @@ public class StackCalcTest {
 	public void throwsExceptionWhennotpassingnullValue() throws Exception {
 		StackImplExpressionEvalCalculator exprCalc = new StackImplExpressionEvalCalculator();
 		thrown.expect(InvalidExpressionException.class);
-		thrown.expectMessage("You had given empty expression, please provide a valid expression.");
+		thrown.expectMessage("You had given an empty expression, please provide a valid expression.");
 		// act
 		exprCalc.evaluateExp(null);
 	}
@@ -95,7 +95,7 @@ public class StackCalcTest {
 		StackImplExpressionEvalCalculator exprCalc = new StackImplExpressionEvalCalculator();
 		thrown.expect(InvalidExpressionException.class);
 		thrown.expectMessage(
-				"Please give valid expression, you might have had given maximum or minimum double values allowed or had passed a wrong expression.");
+				"Please give a valid expression, you might have given maximum or minimum double values allowed or had passed a wrong expression.");
 		// act
 		exprCalc.evaluateExp("add(" + Double.MAX_VALUE + 1 + "," + "2)");
 	}
@@ -105,7 +105,7 @@ public class StackCalcTest {
 		StackImplExpressionEvalCalculator exprCalc = new StackImplExpressionEvalCalculator();
 		thrown.expect(InvalidExpressionException.class);
 		thrown.expectMessage(
-				"Please give valid expression, you might have had given maximum or minimum double values allowed or had passed a wrong expression.");
+				"Please give a valid expression, you might have given maximum or minimum double values allowed or had passed a wrong expression.");
 		// act
 		exprCalc.evaluateExp("add(a,1)");
 	}
@@ -114,7 +114,7 @@ public class StackCalcTest {
 	public void throwsExceptionWhennotpassingdiffrentOperator() throws Exception {
 		StackImplExpressionEvalCalculator exprCalc = new StackImplExpressionEvalCalculator();
 		thrown.expect(InvalidExpressionException.class);
-		thrown.expectMessage("You had given a invalid operator, Only add,mult,div,let are allowed!");
+		thrown.expectMessage("You had given an invalid operator, Only add,mult,div,let are allowed!");
 		// act
 		exprCalc.evaluateExp("let(a, test(b, 10, add(b, b)), let(b, 20, add(a, b))");
 	}
@@ -133,7 +133,7 @@ public class StackCalcTest {
 		StackImplExpressionEvalCalculator exprCalc = new StackImplExpressionEvalCalculator();
 		thrown.expect(InvalidExpressionException.class);
 		thrown.expectMessage(
-				"Please give valid expression, you might have had given maximum or minimum double values allowed or had passed a wrong expression.");
+				"Please give a valid expression, you might have given maximum or minimum double values allowed or had passed a wrong expression.");
 		exprCalc.evaluateExp("let(bc,10,add(bc,bc))");
 	}
 }
