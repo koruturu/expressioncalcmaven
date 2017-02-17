@@ -35,7 +35,14 @@ public class StackCalcTest {
 		assertEquals(-8.0, value, DELTA);
 		value = exprCalc.evaluateExp("add(-1,3.0)");
 		assertEquals(2.0, value, DELTA);
-
+		value = exprCalc.evaluateExp("div(2,0)");
+		assertEquals(Double.POSITIVE_INFINITY, value, DELTA);
+		value = exprCalc.evaluateExp("div(-2,0)");
+		assertEquals(Double.NEGATIVE_INFINITY, value, DELTA);
+		value = exprCalc.evaluateExp("div(-2.6,7.0)");
+		assertEquals(-0.37142857142857144, value, DELTA);
+		
+		
 	}
 
 	@Test
